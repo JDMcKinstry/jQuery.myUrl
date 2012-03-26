@@ -1,0 +1,34 @@
+{
+	"name": "jquery.myUrl",
+	"version": "1.0.0",
+	"title": "jQuery.myUrl()",
+	"author": {
+		"name": "JD McKinstry",
+		"url": "https://github.com/JDMcKinstry/jQuery.myUrl--"
+	},
+	"licenses": [
+		{
+			"type": "GPLv2",
+			"url": "GPL-LICENSE.txt"
+		}
+	],
+	"dependencies": {
+		"jquery": "1"
+	},
+	"description": "Allows dynamic reference and usability to current site url within the jQuery styling.",
+	"keywords": [
+		"myurl",
+		"siteurl",
+		"baseurl"
+	],
+	"homepage": "https://github.com/JDMcKinstry/jQuery.myUrl--",
+	"maintainers": [
+		{
+			"name": "JD McKinstry",
+			"url": "https://github.com/JDMcKinstry"
+		}
+	],
+	"files": [
+		"jquery.myUrl.js"
+	]
+}
