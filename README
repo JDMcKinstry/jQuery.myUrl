@@ -1,0 +1,1 @@
+This simple jQuery extension will allow you to easily access your current site url dynamically anytime after jQuery and this JS have been referenced.
