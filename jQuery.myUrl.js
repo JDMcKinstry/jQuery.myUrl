@@ -80,6 +80,7 @@
 										return cc;
 									};
 								};
+								return cc;
 							};
 							
 							if (bb.length > 0) $.myURL.defaults.subDir = bb.join("/");
@@ -146,6 +147,6 @@
 			mainDir: 	undefined,
 			subDir:		undefined,
 			trail: 		true
-		}
+		};
 	};
 })(jQuery);
