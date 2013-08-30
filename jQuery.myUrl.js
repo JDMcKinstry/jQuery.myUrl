@@ -1,4 +1,4 @@
-(function($) {
+;;(function($) {
 	if (!$.myURL) {
 		$.extend({
 			myURL: function(v) {
@@ -36,11 +36,47 @@
 								};
 							}
 							else if (typeof args[x] === "object") {
-								pm = "?" + $.param(args[x]);
+								var hasQMark = false;
+								if (bb.length > 0) {
+									for (y in bb) {
+										if (bb[y].indexOf("?") > -1) {
+											hasQMark = true;
+										}
+									}
+								}
+								if (Object.prototype.toString.call(args[x]) === '[object Array]') {
+									for (y in args[x]) {
+										if (typeof args[x][y] == "string") {
+											pm += (hasQMark ? "&" : (pm ? (pm.indexOf("?") > -1 ? "&" : "?") : "?")) + args[x][y];
+										}
+										else if (typeof args[x][y] == "object") {
+											var newPM = args[x][y]['key'] + "=" + args[x][y]['value'];
+											if (pm) {
+												pm += (pm.indexOf("?") > -1 ? "&" : (hasQMark ? "&" : "?")) + newPM;
+											}
+											else {
+												pm = (hasQMark ? "&" : "?") + newPM;
+											}
+										}
+									}
+								}
+								else {
+									if (pm) {
+										pm += (pm.indexOf("?") > -1 ? "&" : (hasQMark ? "&" : "?")) + $.param(args[x]);
+									}
+									else {
+										pm = (hasQMark ? "&" : "?") + $.param(args[x]);
+									};
+								};
 							};
 						};
 						if (bb.length > 0) retVal = retVal + "/" + bb.join("/");
-						if (pm) retVal += pm;
+						if (pm) {
+							if (retVal.indexOf("/?") > -1) {
+								retVal = retVal.replace("/?", "?");
+							}
+							retVal += pm;
+						}
 					};
 					retVal = ($.myURL.defaults.trail) ? (retVal.charAt(retVal.length - 1)) ? retVal + "/" : retVal : retVal;
 					var lstChk = retVal.split("/");
